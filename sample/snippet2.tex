@@ -1,0 +1,54 @@
+\documentclass[uplatex,dvipdfmx,ja=standard,a4paper]{bxjsarticle}
+%引用:https://qiita.com/rityo_math/items/efd44bc8f9229e014237
+\usepackage{graphicx}
+\usepackage{tikz}%https://www.mathcha.io/ が便利
+\usetikzlibrary{shadows}
+\usepackage{otf}%フォントメトリックがまともになる
+\usepackage[T1]{fontenc}%上と同様
+\usepackage{lmodern}%デフォルト欧文フォントを使う時だけ、いらんかも
+\usepackage{comment}%複数行コメント
+\usepackage{amsmath,amssymb,amsthm}%
+\usepackage{amsfonts}%おなじみの数式パッケージたち
+\usepackage{mathtools}%数式コマンドを追加
+\usepackage{bbm,bm}%太字ベクトル
+\usepackage{hyperref}%ハイパーリンクが貼れる
+\usepackage{pxjahyper}%リハイパーンクを日本語に対応
+\usepackage{physics}%偏微分とかが簡単に書ける
+\usepackage{float}%画像とかの配置を強制できる
+\usepackage{cancel}%打ち消し線が書ける
+\usepackage{xcolor}
+\usepackage{listings}%日本語入りのソースコードが書ける
+\usepackage{../packages/jlisting}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}%定理環境
+\usepackage{../packages/texex}%自作パッケージ2020あるいは2021 C:\texlive\2020\texmf-dist\tex\uplatex\texex
+
+\begin{document}
+\title{てんぷれ}
+\author{062100873 髙柳海斗}
+\date{\today}
+\maketitle
+
+\section{最初に}
+前略
+
+\section{最後に}
+後略
+
+\lstset{
+	style=customlst,
+}
+\begin{lstlisting}[caption = sampe1 , label = code1 ,language=GLSL]
+precision mediump float;
+uniform float time;
+uniform vec2  mouse;
+uniform vec2  resolution;
+
+void main(void){
+	vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+	vec2 color = (vec2(1.0) + p.xy) * 0.5;
+	gl_FragColor = vec4(color, 0.0, 1.0);
+}
+\end{lstlisting}
+
+\end{document}

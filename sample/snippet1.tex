@@ -1,0 +1,196 @@
+\documentclass[uplatex,dvipdfmx,ja=standard,a4paper]{bxjsarticle}
+%引用:https://qiita.com/rityo_math/items/efd44bc8f9229e014237
+\usepackage[hiresbb]{graphicx}
+\usepackage{array}%表組を微妙に改善
+\usepackage{wrapfig}%図の回り込み
+\usepackage{tikz}%https://www.mathcha.io/ が便利
+\usetikzlibrary{shadows}
+\usepackage{otf}%フォントメトリックがまともになる
+\usepackage[T1]{fontenc}%上と同様
+\usepackage{lmodern}%デフォルト欧文フォントを使う時だけ、いらんかも
+\usepackage{comment}%複数行コメント
+\usepackage{amsmath,amssymb,amsthm}%
+\usepackage{amsfonts}%おなじみの数式パッケージたち
+\usepackage{mathtools}%数式コマンドを追加
+\usepackage{bbm,bm}%太字ベクトル
+\usepackage[hidelinks]{hyperref}%ハイパーリンクが貼れる
+\usepackage{pxjahyper}%リハイパーンクを日本語に対応
+\usepackage{physics}%偏微分とかが簡単に書ける
+\usepackage{float}%画像とかの配置を強制できる
+\usepackage{cancel}%打ち消し線が書ける
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}%定理環境
+\usepackage{xcolor}
+\usepackage{listings}%日本語入りのソースコードが書ける
+\usepackage{../packages/jlisting}
+\usepackage{../packages/texex}%自作パッケージ2020あるいは2021 C:\texlive\2020\texmf-dist\tex\uplatex\texex
+
+\begin{document}
+
+\lstset{
+  style=customlst,
+}
+\begin{lstlisting}[caption = hoge , label = hoge ,language=GLSL]
+precision mediump float;
+uniform float time;
+uniform vec2  mouse;
+uniform vec2  resolution;
+
+void main(void){
+  vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+  vec2 color = (vec2(1.0) + p.xy) * 0.5;
+  gl_FragColor = vec4(color, 0.0, 1.0);
+}
+\end{lstlisting}
+
+\begin{theorem}{なにか定理}{nanikateiri}
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+\end{theorem}
+
+定理番号を参照したいときは\thref{nanikateiri}とする。自動でTheoremかPropositionかDefinitionか判定するコマンドを作るかは検討中。
+
+
+\begin{prop}{なにか命題}{nanikameidai}
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+\end{prop}
+
+番号を参照したいときは\prref{nanikameidai}とする。
+
+\begin{cor}{なにか系}{nanikakei}
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+\end{cor}
+
+番号を参照したいときは\coref{nanikakei}とする。
+
+\begin{definition}{なにか定義}{nanikateigi}
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+\end{definition}
+
+番号を参照したいときは\deref{nanikateigi}とする。
+
+\begin{lemma}{なにか補題}{nanikahodai}
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+\end{lemma}
+
+番号を参照したいときは\leref{nanikahodai}とする。
+
+\begin{example}{なにか例示}{nanikareiji}
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+\end{example}
+
+番号を参照したいときは\exref{nanikareiji}とする。
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[keepaspectratio, width=3cm,clip]{hoge.png}
+  \caption{figスニペット}
+  \label{fig:hoge}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \caption{tableスニペット}
+  \label{table:}
+  \begin{tabular}{cll}
+    \hline
+    系列1 & 系列2 & 系列3 \\
+    \hline
+    要素 & 要素 & 要素 \\[-4pt]
+    要素 & 要素 & 要素 \\[-4pt]
+    要素 & 要素 & 要素 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  %---- 最初の図 ---------------------------
+  \begin{minipage}[t]{0.24\columnwidth}
+    \centering
+    \includegraphics[keepaspectratio, width=\columnwidth]{hoge.png}
+    \caption{figarrayスニペット}
+    \label{fig:hoge1}
+  \end{minipage}
+  %---- 2番目の図 --------------------------
+  \begin{minipage}[t]{0.24\columnwidth}
+    \centering
+    \includegraphics[keepaspectratio, width=\columnwidth]{hoge.png}
+    \caption{cap}
+    \label{fig:hoge2}
+  \end{minipage}
+  %---- 3番目の図 --------------------------
+  \begin{minipage}[t]{0.24\columnwidth}
+    \centering
+    \includegraphics[keepaspectratio, width=\columnwidth]{hoge.png}
+    \caption{cap}
+    \label{fig:hoge3}
+  \end{minipage}
+  \begin{minipage}[t]{0.24\columnwidth}
+    \centering
+    \includegraphics[keepaspectratio, width=\columnwidth]{hoge.png}
+    \caption{cap}
+    \label{fig:hoge4}
+  \end{minipage}
+\end{figure}
+
+\begin{wraptable}{r}{13zw}
+  \vspace*{-\intextsep}
+  \caption{回り込み}
+  \label{wraptable}
+  \begin{tabular}{cll}
+    \hline
+    系列1 & 系列2 & 系列3 \\
+    \hline
+    要素 & 要素 & 要素 \\[-4pt]
+    要素 & 要素 & 要素 \\[-4pt]
+    要素 & 要素 & 要素 \\
+    \hline
+  \end{tabular}
+\end{wraptable}
+
+この下になんか書くほげふにふがぴよ
+ああああああああああああああああああ
+あああああああああああああああああああああああああ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+
+\begin{wrapfigure}{r}{10zw}
+  \vspace*{-\intextsep}
+  \includegraphics[width=10zw]{hoge.png}
+  \caption{caption}
+  \label{fig:wrap}
+\end{wrapfigure}
+
+この下になんか書くほげふにふがぴよ
+ああああああああああああああああああ
+あああああああああああああああああああああああああ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
+
+\end{document}
