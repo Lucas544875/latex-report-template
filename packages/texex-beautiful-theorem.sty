@@ -1,0 +1,37 @@
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\tcbset{
+	mytheo/.style={
+		fonttitle=\gtfamily\fontseries{bx}\selectfont\upshape,
+		enhanced,colframe=burgundy,colback=burgundy!2!white,colbacktitle=burgundy,
+		boxrule=0pt,borderline south={2pt}{-2pt}{burgundy},
+		left*=1zw,right*=1zw,
+		theorem style=standard,
+		breakable,sharp corners,
+		before skip=8pt,
+		after skip=10pt,
+		before upper={\setlength{\parindent}{1zw}},
+		before lower={\setlength{\parindent}{1zw}}
+	}
+}
+%Theorem
+\newtcbtheorem[number within=section]{theorem}{定理}%
+{mytheo}{th}
+%Proposition
+\newtcbtheorem[use counter from=theorem]{prop}{命題}%
+{mytheo}{pr}
+%Corollary
+\newtcbtheorem[use counter from=theorem]{cor}{系}%
+{mytheo}{co}
+%Definition
+\newtcbtheorem[use counter from=theorem]{definition}{定義}%
+{mytheo,
+colframe=blue!50!black,colback=blue!50!black!2!white,colbacktitle=blue!50!black,borderline south={2pt}{-2pt}{blue!50!black},}{de}
+%Lemma
+\newtcbtheorem[use counter from=theorem]{lemma}{補題}%
+{mytheo,
+colframe=green!50!black,colback=green!50!black!2!white,colbacktitle=green!50!black,borderline south={2pt}{-2pt}{green!50!black},}{le}
+%Example
+\definecolor{charcoal}{rgb}{0.21, 0.27, 0.31}
+\newtcbtheorem[use counter from=theorem]{example}{例}%
+{mytheo,
+colframe=charcoal,colback=charcoal!2!white,colbacktitle=charcoal,borderline south={2pt}{-2pt}{charcoal},}{ex}
