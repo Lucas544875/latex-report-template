@@ -1,0 +1,35 @@
+\newtheoremstyle{jplain}% name
+{}% space above
+{}% space below
+{\normalfont}% body font
+{}% indent amount
+{\bfseries}% theorem head font
+{.}% punctuation after theorem head
+{4pt}% space after theorem head (default: 5pt)
+{\thmname{#1}\thmnumber{#2}\thmnote{\hspace{2pt}(#3)}}% theorem head spec
+
+\theoremstyle{jplain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem*{theorem*}{定理}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem*{definition*}{定義}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem*{lemma*}{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem*{corollary*}{系}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem*{proposition*}{命題}
+\newtheorem{example}[theorem]{例}
+\newtheorem*{example*}{例}
+\newtheorem{notation}[theorem]{記号}
+\newtheorem*{notation*}{記号}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem*{remark*}{注意}
+\newtheorem{problem}[theorem]{問題}
+\newtheorem*{problem*}{問題}
+\newtheorem{claim}[theorem]{主張}
+\newtheorem*{claim*}{主張}
+\newtheorem{fact}[theorem]{事実}
+\newtheorem*{fact*}{事実}
+  
+\renewcommand\proofname{\bfseries 証明}
